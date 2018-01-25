@@ -9,11 +9,15 @@ apply plugin: 'maven'
 
 group='org.wsgh.gradle.plugins'
 version='1.0.0'
+def artifactName='my-gradle-plugin'
 
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: uri('/Users/zhangyipeng/Maven'))
+            repository(url: uri('/Users/zhangyipeng/Maven')){
+                //自定义maven仓库最后的artifactId，也就是版本号前面的那部分名字。不定义的话，默认会采用module名
+                pom.artifactId = artifactName
+            }
         }
     }
 }
